@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: gray;
+    height: 100%;
+}
+
+#mainContainer{
+    background-color: lightgray;
+    height: 100vh;
+    width: 80%;
+}
+
+#navbar{
+    background-color: black;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.navButton{
+    height: 60%;
+    margin: 5px;
+    width: 70px;
+    cursor: pointer;
+}
+
+#userInfo{
+    background-color:lightgreen;
+    min-width: 80px;
+    height: 55%;
+    cursor: default;
+    background-color: transparent;
+    color: white;
+    font-weight: bolder;
+    border: 1px solid white;
+}
+#logo{
+    background-color: yellow;
+    font-weight: bolder;
+    width: 130px;
+    height: 70%;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px;
+}

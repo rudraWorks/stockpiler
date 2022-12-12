@@ -1,0 +1,34 @@
+<%- include('../partials/upper.ejs') %>
+<link rel="stylesheet" href="/auth/login.css">
+<form id="loginForm" action="">
+    <h2>Please login</h2><hr>
+    <input name="username" type="text" placeholder="username..">
+    <input name="password" type="text" placeholder="password..">
+    <input type="submit" value="login">
+</form>
+
+
+
+<script>
+    let form = document.getElementById('loginForm')
+    form.addEventListener('submit',async (e)=>{
+        e.preventDefault()
+        let username = e.target.username.value.trim()
+        let password = e.target.password.value.trim()
+
+        let data = await fetch('/login',{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({username,password})
+        })
+        let res = await data.json()
+        if(res.success){
+            location.reload()
+        }
+        else {
+            alert(res.message)
+        }
+    })
+</script>
+<%- include('../partials/lower.ejs') %>
+

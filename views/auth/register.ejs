@@ -1,0 +1,35 @@
+<%- include('../partials/upper.ejs') %>
+<link rel="stylesheet" href="/auth/register.css">
+<form id="registerForm">
+    <h2>Please register</h2><hr>
+    <input name="username" type="text" placeholder="username..">
+    <input name="fullname" type="text" placeholder="full name..">
+    <input name="email" type="email" placeholder="email..">
+    <input name="password" type="text" placeholder="password..">
+    <input type="submit" value="register">
+</form>
+
+<script>
+    let form = document.getElementById('registerForm')
+    form.addEventListener('submit',async (e)=>{
+        e.preventDefault()
+        let username = e.target.username.value.trim()
+        let fullname = e.target.fullname.value.trim()
+        let password = e.target.password.value.trim()
+        let email = e.target.email.value.trim()
+
+        let data = await fetch('/register',{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({username,fullname,password,email})
+        })
+        let res = await data.json()
+        if(res.success){
+            location.reload()
+        }
+        else {
+            alert(res.message)
+        }
+    })
+</script>
+<%- include('../partials/lower.ejs') %>

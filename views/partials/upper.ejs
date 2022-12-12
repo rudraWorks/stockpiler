@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1024">
+    <link rel="stylesheet" href="/main.css">
+    <title>Stockpiler | Inventory Management System</title>
+</head>
+<body>
+    <center>
+        <div id="mainContainer">
+            <div id="navbar"> 
+                <button id="logo">stockpiler</button>
+                <button  class="navButton" onclick="location.href='/'">Home</button>
+                <button class="navButton" onclick="location.href='/about'">About</button>
+                <% if(typeof user!='undefined' && user) { %>
+                     <button style="margin-left: auto;" id="userInfo"><%= user %></button>
+                     <button class="navButton" onclick="location.href='/dashboard'">Dashboard </button>
+                    <button class="navButton"  onclick="location.href='/logout'">Logout</button>
+                <% } else { %>
+                    <button class="navButton" style="margin-left: auto;" onclick="location.href='/login'">Login</button>
+                    <button class="navButton" onclick="location.href='/register'">Register</button>
+                <% } %>
+            </div>
+
+        
