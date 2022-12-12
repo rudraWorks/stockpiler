@@ -54,8 +54,13 @@ module.exports.loginPost = async (req,res) =>{
     try{
         let t =await userModel.findOne({username})
         if(t){
-            res.cookie('stockpiler',createToken(t.username),{httpOnly:true,maxAge:maxAge})
-            return res.json({success:true,message:"successfully logged in"})
+            if(t.password==password){
+                res.cookie('stockpiler',createToken(t.username),{httpOnly:true,maxAge:maxAge})
+                return res.json({success:true,message:"successfully logged in"})
+            }
+            else{
+                return res.json({success:false,message:"incorrect password"})
+            }
         }
         else{
             return res.json({success:false,message:"this username is not registered!"})
