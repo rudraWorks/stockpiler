@@ -30,7 +30,7 @@ module.exports.allItems = async (req,res)=>{
     if(!res.locals.isAuthenticated){
         return res.redirect('/login')
     }
-    let t = await itemModel.find({})
+    let t = await itemModel.find({username:res.locals.user})
     res.render('inventory/allItems',{allItems:t})
 }
 
