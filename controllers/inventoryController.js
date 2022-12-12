@@ -17,7 +17,7 @@ module.exports.addItem = async (req,res) =>{
     if(!itemId || !itemName || !itemPrice || !itemQuantity || !itemManufacturer || !itemExpiry || !itemEntry) return res.json({success:false,message:"input fields can't be empty!"})
 
     try{
-        await itemModel.create({itemId,itemName,itemPrice,itemQuantity,itemManufacturer,itemExpiry,itemEntry})
+        await itemModel.create({username:res.locals.user,itemId,itemName,itemPrice,itemQuantity,itemManufacturer,itemExpiry,itemEntry})
         return res.json({success:true})
     }
     catch(e){
