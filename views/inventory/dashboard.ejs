@@ -1,7 +1,52 @@
 <%- include('../partials/upper.ejs') %>
-
+<link rel="stylesheet" href="/inventory/dashboard.css">
 
 <h1>Dashboard</h1>
-coming soon..
+<!-- coming soon.. -->
 
+<div id="dashboardContainer">
+    <div>
+        <button onclick="location.href='/allItems'">Show all items</button>
+    </div>
+    <div id="addItem">
+        <p style="font-size: 20px;">Add item</p><hr>
+        <form id="addItemForm" action="">
+            <input name="itemId" type="number" placeholder="item id..">
+            <input name="itemName" placeholder="item name.." type="text">
+            <input name="itemPrice" placeholder="item price.." type="number">
+            <input name="itemQuantity" placeholder="item quantity.." type="number">
+            <input name="itemManufacturer" placeholder="manifacturer.." type="text">
+            <input name="itemExpiry" type="date" placeholder="expiry date">
+            <input type="submit">
+        </form>
+    </div>
+</div>
+
+<script>
+        let addItemForm = document.getElementById('addItemForm')
+        addItemForm.addEventListener('submit',async (e)=>{
+            e.preventDefault()
+            let {itemId,itemName,itemPrice,itemQuantity,itemManufacturer,itemExpiry}=e.target 
+            itemId=itemId.value 
+            itemName=itemName.value 
+            itemPrice=itemPrice.value 
+            itemQuantity=itemQuantity.value 
+            itemManufacturer=itemManufacturer.value 
+            itemExpiry=itemExpiry.value
+            // console.log(itemId,itemName,itemPrice,itemQuantity,itemManufacturer,itemExpiry)
+            let itemEntry = new Date()
+            let data = await fetch('/addItem',{
+                headers:{"Content-Type":"application/json"},
+                method:"POST",
+                body:JSON.stringify({itemId,itemName,itemPrice,itemQuantity,itemManufacturer,itemExpiry,itemEntry})
+            })
+            let res = await data.json()
+            if(res.success){
+                location.href="/allItems"
+            }
+            else{
+                alert(res.message)
+            }
+        })
+</script>
 <%- include('../partials/lower.ejs') %>

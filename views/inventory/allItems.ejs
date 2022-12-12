@@ -1,0 +1,42 @@
+<%- include('../partials/upper.ejs') %>
+<link rel="stylesheet" href="/inventory/allItems.css">
+
+<table id="itemsTable">
+    <tr>
+        <th>id</th><th>entry</th><th>name</th><th>price</th><th>quantity</th><th>manufacturer</th><th>expiry</th>
+        <th>actions</th>
+    </tr>
+        <% for(let i=0;i<allItems.length;++i) { %>
+            <tr>
+           
+                <td><%= allItems[i].itemId %></td>
+                <td><%= allItems[i].itemEntry.getDate()%>/<%= allItems[i].itemEntry.getMonth()%>/<%= allItems[i].itemEntry.getFullYear()%></td>
+                <td><%= allItems[i].itemName %></td>
+                <td><%= allItems[i].itemPrice %></td>
+                <td><%= allItems[i].itemQuantity %></td>
+                <td><%= allItems[i].itemManufacturer %></td>
+                <td><%= allItems[i].itemExpiry.getDate()%>/<%= allItems[i].itemExpiry.getMonth()%>/<%= allItems[i].itemExpiry.getFullYear()%></td>
+                <td style="display: flex;justify-content: center;"> <button style="margin-left: 5px; width: 50px;">edit</button> <button onclick="deleteItem(this)" id="<%=allItems[i]._id %>" style="margin-left: 5px;width: 50px;">delete</button> </td>
+            </tr>
+        <% } %>
+    
+</table>
+<script>
+    async function deleteItem(id){
+        // alert(id.getAttribute('id'))
+        id=id.getAttribute('id')
+        let data = await fetch('/deleteItem',{
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({id}),
+            method:"POST"
+        })
+        let res = await data.json()
+        if(res.success){
+            location.reload()
+        }
+        else {
+            alert(res.message)
+        }
+    }
+</script>
+<%- include('../partials/lower.ejs') %>

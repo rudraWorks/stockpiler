@@ -1,0 +1,28 @@
+#allItemsContainer{
+    display: flex;
+    padding: 10px;
+    background-color: skyblue;
+}
+#itemCard{
+    margin: 5px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+#itemsTable{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 90%;
+}
+th,td{
+    border: 1px solid black;
+    padding: 2px;
+    text-align: center;
+}
+tr:nth-child(odd){
+    background-color: lightgreen;
+}
+tr:first-child{
+    background-color: gray;
+}

@@ -14,8 +14,8 @@ const itemsModel = require('./models/items')
 const {checkUser} = require('./middlewares/checkUser')
 
 mongoose.set('strictQuery', true);
-// const DB = "mongodb://127.0.0.1:27017/inventory"
-const DB = process.env.DB
+const DB = "mongodb://127.0.0.1:27017/inventory"
+// const DB = process.env.DB
 mongoose.connect(DB,()=>{
     console.log("connected to DB")
 })

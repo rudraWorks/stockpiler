@@ -1,0 +1,20 @@
+#dashboardContainer{
+    margin-top: 10px;
+    display: flex;
+    /* background-color: skyblue; */
+    padding: 5px;
+}
+#addItem{
+    width: 300px;
+    /* height: 400px; */
+    border: 1px solid black;
+    margin-left: auto;
+}
+#addItemForm{
+    display: flex;
+    flex-direction: column;
+}
+#addItemForm>input{
+    margin: 5px;
+    padding: 5px;
+}
