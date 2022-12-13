@@ -16,7 +16,7 @@
                 <td><%= allItems[i].itemQuantity %></td>
                 <td><%= allItems[i].itemManufacturer %></td>
                 <td><%= allItems[i].itemExpiry.getDate()%>/<%= allItems[i].itemExpiry.getMonth()%>/<%= allItems[i].itemExpiry.getFullYear()%></td>
-                <td style="display: flex;justify-content: center;"> <button style="margin-left: 5px; width: 50px;">edit</button> <button onclick="deleteItem(this)" id="<%=allItems[i]._id %>" style="margin-left: 5px;width: 50px;">delete</button> </td>
+                <td style="display: flex;justify-content: center;">  <button onclick="deleteItem(this)" id="<%=allItems[i]._id %>" style="margin-left: 5px;width: 50px;">delete</button> </td>
             </tr>
         <% } %>
     
