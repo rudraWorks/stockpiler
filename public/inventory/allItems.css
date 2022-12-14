@@ -26,3 +26,7 @@ tr:nth-child(odd){
 tr:first-child{
     background-color: gray;
 }
+
+#itemsData{
+    margin-bottom: 30px;
+}

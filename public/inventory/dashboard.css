@@ -18,3 +18,13 @@
     margin: 5px;
     padding: 5px;
 }
+
+#itemsData{
+    border: 1px solid black;
+    margin-left: 30px;
+    width: 50%;
+}
+#itemsData>ul{
+    margin-left: 30px;
+    text-align: left ;
+}
